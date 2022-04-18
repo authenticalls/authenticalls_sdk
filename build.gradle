@@ -1,0 +1,55 @@
+def secretProps = new Properties()
+secretProps.load(new FileInputStream(rootProject.file("secrets.properties")))
+
+ext {
+}
+
+buildscript {
+    ext {
+        kotlin_version = "1.4.21"
+        nav_version = "2.3.2"
+        lifecycle_version = "2.2.0"
+        flashcall_retrofit_version = "2.9.0"
+        flashcall_moshi_version = '1.11.0'
+        flashcall_logging_interceptor_version = "4.9.0"
+        flashcall_work_version = "2.4.0"
+        flashcall_recyclerview_version = "1.2.0-beta01"
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.1.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('secrets.properties').newDataInputStream())
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+        repositories {
+            maven {
+                name = "FlashcallGithubPackages"
+                url = uri("https://maven.pkg.github.com/adiklotech/flashcall_sdk")
+                credentials {
+                    username = properties.getProperty("GITHUB_USERNAME") ?: System.getenv("USERNAME")
+                    password = properties.getProperty("GITHUB_PACKAGE_READ_TOKEN") ?: System.getenv("TOKEN")
+                }
+            }
+         }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

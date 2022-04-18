@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authenticallsFlashcallFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.authenticalls.flashcall_sdk.ui.FlashcallViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/flashcall_primary_grey">
+
+        <ScrollView
+            android:id="@+id/top_linear_layout_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_linear_layout_id"
+            android:layout_below="@id/top_linear_layout_id">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/margin_top_logo"
+                    app:srcCompat="@drawable/authenticalls_logo_transparent" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/waiting_for_call" />
+
+                <TextView
+                    android:id="@+id/flashcallProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/firasans_regular"
+                    android:textAlignment="center"
+                    android:textColor="@color/flashcall_primary_white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/animationView" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/bottom_linear_layout_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:minHeight="70dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/flashcallStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/firasans_regular"
+                android:text="@{`Flashcall status: ` + viewModel.internalFlashcallStatus.toString()}"
+                android:textColor="@color/flashcall_primary_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="flashcallStatus..." />
+        </ScrollView>
+    </RelativeLayout>
+</layout>
+
+
+    <!--    <?xml version="1.0" encoding="utf-8"?><layout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:id="@+id/authenticallsFlashcallFragment">-->
+
+    <!--<ScrollView-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:background="@color/flashcall_primary_grey">-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="top"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            tools:context="com.authenticalls.flashcall_demo.MainActivity">-->
+
+    <!--            <ImageView-->
+    <!--                android:id="@+id/imageView2"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="100dp"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:srcCompat="@drawable/authenticalls_logo_transparent" />-->
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_gravity="top"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <com.airbnb.lottie.LottieAnimationView-->
+    <!--                android:id="@+id/animationView"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="300dp"-->
+    <!--                android:layout_gravity="center"-->
+    <!--                android:scaleType="fitXY"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:lottie_autoPlay="true"-->
+    <!--                app:lottie_loop="false"-->
+    <!--                app:lottie_rawRes="@raw/waiting_for_call" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/paymentPartial"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:fontFamily="@font/firasans_regular"-->
+    <!--                android:text=""-->
+    <!--                android:textAlignment="center"-->
+    <!--                android:textColor="@color/flashcall_primary_purple"-->
+    <!--                android:textSize="24sp"-->
+    <!--                android:visibility="@{viewModel.internalFlashcallStatus.toString() == `PAID` ? View.INVISIBLE : View.VISIBLE}"-->
+    <!--                app:layout_constraintBottom_toTopOf="@+id/flashcallId"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                tools:text="Payment state\n...\..." />-->
+
+    <!--        </LinearLayout>-->
+
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="bottom"-->
+    <!--            android:orientation="vertical">-->
+
+
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--    </LinearLayout>-->
+    <!--</ScrollView>-->
+    <!--</layout>-->
