@@ -78,6 +78,7 @@ The data classes that the SDK exposes will help you create transactions and upda
 
 Most of the ones located in “com.authenticalls.flashcall_sdk.network.models” are based on our API Integration Manual. In this section we will explain each of them: 
 
+
 ```CallDetails```: DTO of the needed call details.
 
 ➔ ```msisdn```: ```String```
@@ -86,17 +87,18 @@ Most of the ones located in “com.authenticalls.flashcall_sdk.network.models”
 
 ➔ ```timestamp```: ```String```
 
-FlashcallSDKStatus
 
-➔ Instantiated by flashcallViewModel and available as LiveData (flashcallViewModel.flashcallSDKStatus). 
+```FlashcallSDKStatus```
 
-➔ Initialized as WAITING_FOR_FLASHCALL at the start of the application.
+➔ Instantiated by ``flashcallViewModel`` and available as LiveData (```flashcallViewModel.flashcallSDKStatus```). 
 
-➔ Changes to CALL_RINGING when phone starts to ring 
+➔ Initialized as ```WAITING_FOR_FLASHCALL``` at the start of the application.
 
-➔ Changes to CALL_HANGUP when the call is ended. 
+➔ Changes to ```CALL_RINGING``` when phone starts to ring 
 
-➔ Changes to CALL_FINISHED After the call details are available and stored in callDetails variable in FlashcallViewModel
+➔ Changes to ```CALL_HANGUP``` when the call is ended. 
+
+➔ Changes to ```CALL_FINISHED``` After the call details are available and stored in callDetails variable in ```FlashcallViewModel```
 
 ## Changelog 
 
