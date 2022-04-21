@@ -23,7 +23,7 @@ def secretProps = new Properties()
 secretProps.load(new FileInputStream(rootProject.file("secrets.properties"))) repositories { 
 maven { 
     name = "AuthenticallsSDKPackages" 
-    url = uri("https://maven.pkg.github.com/authenticalls/pay_android_app") 
+    url = uri("https://maven.pkg.github.com/authenticalls/authenticalls_sdk") 
         credentials { 
             username = secretProps['AUTHENTICALLS_GITHUB_USERNAME'] 
             password = secretProps['AUTHENTICALLS_GITHUB_READ_TOKEN'] 
@@ -52,7 +52,7 @@ You can replace ```1.0.0``` with another version of the SDK, but we recommend yo
 
 The SDK is built around Android MVVM (Model, View, ViewModel) Design Pattern. More exactly, it exposes ViewModels, Fragments and Activities that contain all the data and business logic required to facilitate the payments made via our system. The available ViewModels/Fragments/Activities are: 
 
-➔ ```FlashcallViewModel``` (```com.authenticalls.pay_sdk.ui.FlashcallViewModel```) 
+➔ ```FlashcallViewModel``` (```com.authenticalls.flashcall_sdk.ui.FlashcallViewModel```) 
     
 ➔ ```addListener``` - Used to add listener for calls
 
