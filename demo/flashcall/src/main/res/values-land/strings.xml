@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="checkout_via_sms">Checkout via SMS</string>
+    <string name="checkout_via_voice">Checkout via Voice</string>
+    <string name="thank_you_for_your_purchase">Thank you for your purchase!</string>
+    <string name="check_again">Check again</string>
+    <string name="relaunch_payment">Relaunch payment</string>
+    <string name="payment_confirmed">Payment confirmed\nReturning to your application.</string>
+    <string name="payment_confirmed_no_nav">Payment confirmed\nPress the back button to return to your application.</string>
+    <string name="sms_subscriptions">%d SMS subscriptions</string>
+    <string name="validate_your_phone_number_text">Validate your Phone Number</string>
+</resources>

@@ -1,0 +1,102 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+def secretProps = new Properties()
+secretProps.load(new FileInputStream(rootProject.file("secrets.properties")))
+
+repositories {
+    mavenLocal()
+//    maven {
+//        name = "AuthenticallsPackages"
+//        url = uri("https://maven.pkg.github.com/adiklotech/flashcall_sdk")
+//        credentials {
+//            username = secretProps['GITHUB_USERNAME']
+//            password = secretProps['GITHUB_READ_TOKEN']
+//        }
+//    }
+}
+
+android {
+    signingConfigs {
+        config {
+            storeFile file(store_file)
+            storePassword store_pass
+            keyAlias key_alias
+            keyPassword key_pass
+        }
+    }
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.flashcalldemo"
+        minSdkVersion 21 // navigation component requires 21
+        targetSdkVersion 30
+        versionCode 3
+        versionName "1.0.5"
+        signingConfig signingConfigs.config
+    }
+
+    buildTypes {
+        applicationVariants.all { variant ->
+            variant.buildConfigField "String", "AUTHENTICALLS_API_KEY", "\"" + getApiKey() + "\""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+def getApiKey() {
+    def Properties props = new Properties()
+    props.load(new FileInputStream(new File('secrets.properties')))
+    return props['AUTHENTICALLS_API_KEY']
+}
+
+dependencies {
+    // Gif addon
+    implementation "com.airbnb.android:lottie:5.0.3"
+
+    // Phonenumber field
+    implementation 'com.fredporciuncula:phonemoji:1.2.0'
+
+    // Retrofit HTTP client
+    implementation "com.squareup.retrofit2:converter-moshi:$flashcall_retrofit_version"
+
+    // Moshi for JSON parser
+    implementation "com.squareup.moshi:moshi-kotlin:$flashcall_moshi_version"
+
+    // HTTP logger
+    implementation "com.squareup.okhttp3:logging-interceptor:$flashcall_logging_interceptor_version"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation 'androidx.navigation:navigation-compose:1.0.0-alpha04'
+    implementation 'androidx.fragment:fragment-ktx:1.3.0-alpha07'
+    implementation "com.authenticalls.libraries.flashcall_sdk:1.0.0"
+}

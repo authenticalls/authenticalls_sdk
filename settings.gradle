@@ -1,2 +1,2 @@
-rootProject.name = "Authenticalls Flashcall SDK"
-include ':flashcall_sdk'
+rootProject.name = "AuthenticallsSDK"
+include ':demo:flashcall'

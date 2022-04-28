@@ -1,0 +1,159 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
+//apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlinx-serialization'
+
+//def configFilePath = "./src/main/assets/config.json"
+//def configFileEmptyMessage = "You are building Sinch Android Verification Sample Application project that requires presence of a configuration file with your auhthorization data.\n" +
+//        "Create and place your config.json file inside the " +
+//        "assets folder (app/src/main/assets) and re-build the application\n" +
+//        "Example of config.json:\n" +
+//        "[{\n" +
+//        "  \"name\": \"<ENVIRONMENT NAME\",\n" +
+//        "  \"appKey\": \"<YOUR SINCH APP KEY>\",\n" +
+//        "  \"environment\": \"ocra.api.sinch.com\"\n" +
+//        "}]\n"
+//
+//def requiredConfigFileParamsMissingMessage = "You are building Sinch Android Verification Sample Application project that requires your application specific authorization data (key).\n" +
+//        "Check config.json file located in app/src/main/assets folder and fill it with these values copied from Sinch portal website of your application.\n"
+
+ext {
+    min_sdk_version = "21"
+    compile_sdk_version = "29"
+    target_sdk_version = "29"
+    build_tools_version = "29.0.3"
+}
+
+android {
+    compileSdkVersion 32 // TODO
+    buildToolsVersion "30.0.3" // TODO
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+//
+//    signingConfigs {
+//        release {
+//            keyAlias keyAliasSinch
+//            keyPassword keyPasswordSinch
+//            storeFile keyFileSinch
+//            storePassword storePasswordSinch
+//        }
+//    }
+
+    sourceSets {
+        main.res.srcDirs += "$project.rootDir/samples/common/res"
+    }
+
+    defaultConfig {
+        applicationId "com.authenticalls.demo"
+        minSdkVersion 21 // TODO
+        targetSdkVersion 32 // TODO
+//        versionCode 1
+//        versionName "1.0"
+
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+//    flavorDimensions "mode", "apienv"
+//    productFlavors {
+//        internal {
+//            dimension "mode"
+//        }
+//    }
+//
+//    variantFilter { variant ->
+//        def names = variant.flavors*.name
+//        // To check for a certain build type, use variant.buildType.name == "<buildType>"
+//        if (names.contains("internal") && !names.contains("production")) {
+//            // Gradle ignores any variants that satisfy the conditions above.
+//            // In our case it we don't need any other flavors other then 'production' - endpoint can be changed manually
+//            setIgnore(true)
+//        }
+//    }
+
+    buildTypes {
+        release {
+            debuggable true
+//            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+// To inline the bytecode built with JVM target 1.8 into
+// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+}
+
+//preBuild.doFirst {
+//    def configFile = file(configFilePath)
+//    if (!configFile.exists()) {
+//        ant.fail(configFileEmptyMessage)
+//    }
+//    if (configFile.text.contains("<YOUR APP KEY")) {
+//        ant.fail(requiredConfigFileParamsMissingMessage)
+//    }
+//}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.airbnb.android:lottie:5.0.3'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.navigation:navigation-compose:2.5.0-beta01'
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
+    implementation 'com.fredporciuncula:phonemoji:1.2.0'
+
+    // Retrofit HTTP client
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+
+    // Moshi for JSON parser
+    implementation "com.squareup.moshi:moshi-kotlin:1.11.0"
+
+    // HTTP logger
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation project(':library:verification-all')
+//
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+//    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.xSerialization}"
+//    implementation "androidx.appcompat:appcompat:${Versions.appCompat}"
+//    implementation "androidx.core:core-ktx:${Versions.ktx}"
+//    implementation "com.google.android.material:material:${Versions.material}"
+//    implementation "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+//    implementation "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+//    implementation "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+//    implementation "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+//    implementation "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+//    implementation 'org.greenrobot:eventbus:3.2.0'
+//    implementation "androidx.preference:preference-ktx:1.1.1"
+//
+//    debugImplementation 'com.facebook.soloader:soloader:0.9.0'
+//    debugImplementation 'com.facebook.flipper:flipper:0.41.0'
+//    debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.41.0'
+//
+//    releaseImplementation 'com.facebook.flipper:flipper-noop:0.41.0'
+//
+//    testImplementation "junit:junit:${Versions.jUnit}"
+//
+//    androidTestImplementation "androidx.test.ext:junit:${Versions.jUnitAndroidX}"
+//    androidTestImplementation "androidx.test.espresso:espresso-core:${Versions.espresso}"
+}

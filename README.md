@@ -23,7 +23,7 @@ def secretProps = new Properties()
 secretProps.load(new FileInputStream(rootProject.file("secrets.properties"))) repositories { 
 maven { 
     name = "AuthenticallsSDKPackages" 
-    url = uri("https://maven.pkg.github.com/authenticalls/authenticalls_sdk") 
+    url = uri("https://maven.pkg.github.com/authenticalls/authenticalls")
         credentials { 
             username = secretProps['AUTHENTICALLS_GITHUB_USERNAME'] 
             password = secretProps['AUTHENTICALLS_GITHUB_READ_TOKEN'] 

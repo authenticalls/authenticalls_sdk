@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AuthenticallsButtonColors">
+        <item name="colorPrimary">@color/flashcall_primary_purple</item>
+    </style>
+
+    <style name="AuthenticallsButtonShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">30dp</item>
+        <item name="cornerSizeTopRight">30dp</item>
+        <item name="cornerSizeBottomRight">30dp</item>
+        <item name="cornerSizeBottomLeft">30dp</item>
+    </style>
+
+    <style name="AuthenticallsButton" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableRight">@drawable/flashcall_button_arrow_white</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:textColor">@color/flashcall_primary_white</item>
+
+        <!-- Radius-->
+        <item name="shapeAppearanceOverlay">@style/AuthenticallsButtonShape</item>
+
+        <!-- Don't let Material Design Button component get colors from app's theme-->
+        <item name="materialThemeOverlay">@style/AuthenticallsButtonColors</item>
+    </style>
+</resources>

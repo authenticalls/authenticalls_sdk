@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/landingFragment">
+    <fragment
+        android:id="@+id/phoneValidatorFragment"
+        android:name="com.authenticalls.flashcall_demo.ui.main.product.PhoneValidatorFragment"
+        android:label="PhoneValidatorFragment"
+        tools:layout="@layout/phone_validator_fragment" >
+        <action
+            android:id="@+id/action_phoneValidatorFragment_to_landingFragment"
+            app:destination="@id/landingFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+<!--        <action-->
+<!--            android:id="@+id/action_phoneValidatorFragment_to_flashcallFragment"-->
+<!--            app:destination="@id/flashcallFragment"-->
+<!--            app:enterAnim="@android:anim/slide_in_left"-->
+<!--            app:exitAnim="@android:anim/slide_out_right" />-->
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/flashcallFragment"-->
+<!--        android:name="com.authenticalls.flashcall_sdk.ui.FlashcallFragment"-->
+<!--        android:label="FlashcallFragment"  />-->
+<!--        <action-->
+<!--            android:id="@+id/action_flashcallFragment_to_phoneValidatorResultFragment"-->
+<!--            app:destination="@id/phoneValidatorResultFragment" />-->
+    <fragment
+        android:id="@+id/landingFragment"
+        android:name="com.authenticalls.flashcall_demo.ui.main.LandingFragment"
+        android:label="fragment_landing"
+        tools:layout="@layout/landing_fragment" >
+        <action
+            android:id="@+id/action_landingFragment_to_phoneValidatorFragment"
+            app:destination="@id/phoneValidatorFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneValidatorResultFragment"
+        android:name="com.authenticalls.flashcall_demo.ui.main.product.PhoneValidatorResultFragment"
+        android:label="phoneValidatorResultFragment"
+        tools:layout="@layout/phone_validator_result_fragment" >
+        <action
+            android:id="@+id/action_phoneValidatorFragment_to_landingFragment"
+            app:destination="@id/landingFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+</navigation>

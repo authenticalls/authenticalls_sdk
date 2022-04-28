@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="flashcall_primary_grey">#282E3C</color>
+    <color name="flashcall_primary_purple">#4B3767</color>
+    <color name="flashcall_primary_white">#EEF0F2</color>
+    <color name="flashcall_secondary">#F5238D</color>
+</resources>
